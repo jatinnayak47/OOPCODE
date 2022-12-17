@@ -1,0 +1,113 @@
+//PROGRAM TO STORE STUDENT DETAILS AND MARKS 
+#include<iostream>
+#include<string>
+using namespace std;
+
+class STUDENT
+{
+ private:   
+    string first_name,last_name;
+    int roll_no;
+    int marks[10];
+    string section;
+    int age;
+    int clas;
+    long double mob_no;
+    int total_marks;
+    int percentage;
+    string gender;
+    string address;
+    int numsub;
+ public:
+    void getdata()
+    {
+        cout<<".....ENTER STUDENT DETAILS....."<<endl<<endl;
+        cout<<"Enter Name :";
+        cin>>first_name>>last_name;
+        cout<<"Enter class :";
+        cin>>clas;
+        cout<<"Enter Roll No. :";
+        cin>>roll_no;
+        cout<<"Enter Section :";
+        cin>>section;
+        cout<<"Enter Number Of Subject :";
+        cin>>numsub;
+        cout<<"Enter Age :";
+        cin>>age;
+        cout<<"Enter Gender :";
+        cin>>gender;
+        cout<<"Enter Contact Number :";
+        cin>>mob_no;
+        cout<<"Enter Address :";
+        cin>>address;
+    }
+    void entermarks()
+    {
+        for(int i=1;i<=numsub;i++)
+        {
+            cout<<"Enter Marks Of Subject "<<i<<" :";
+            cin>>marks[i];
+        }
+    }
+    void calmrks()
+    {
+        total_marks=0;
+        for(int i=0;i<numsub;i++)
+        {
+            total_marks=total_marks+marks[i];
+        }
+        percentage=total_marks/numsub;
+    }
+    void showdata()
+    {
+        cout<<":.....STUDENT DETAILS.....:"<<endl<<endl;
+        cout<<"Name : "<<first_name<<last_name<<endl;
+        cout<<"Class : "<<clas<<endl;
+        cout<<"Section : "<<section<<endl;
+        cout<<"Roll No. : "<<roll_no<<endl;
+        cout<<"Age : "<<age<<endl;
+        cout<<"Gender : "<<gender<<endl;
+        cout<<"Contact No. : "<<mob_no<<endl;
+        cout<<"Address : "<<address<<endl;
+        cout<<"..:Marks Obtained In "<<numsub<<" Subjects:.."<<endl;
+        for(int i=1;i<numsub;i++)
+        {
+            cout<<"Marks obtained in subject "<<i<<" :"<<marks[i]<<endl;
+        }
+        cout<<"Total Marks Obtained : "<<total_marks<<endl;
+        cout<<"Percentage Obtained :"<<" :"<<percentage<<endl;
+    }
+};
+
+int main()
+{
+    int option;
+    int num_of_student;
+    STUDENT* S;
+    
+    cout<<"\n1.ENTER DETAILS.\n2.SHOW DETAILS."<<endl;
+    cout<<"Choose Operation To Perform :"<<endl;
+    cin>>option;
+    cout<<"Enter Total Number Of Student In Institute :";
+    cin>>num_of_student;
+    S = new STUDENT[num_of_student];
+    switch(option)
+    {
+    case 1:
+     for(int i=0;i<num_of_student;i++)
+      {
+        S[i].getdata();
+        S[i].entermarks();
+        S[i].calmrks();
+      }
+      break;
+    case 2:
+        for(int i=0;i<num_of_student;i++)
+        {
+            S[i].showdata();
+        }
+        break;
+    }
+
+    return 0;
+}
