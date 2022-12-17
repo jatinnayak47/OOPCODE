@@ -1,0 +1,75 @@
+//PROGRAM TO CALCULATE HRA,DRA AND GROSS SALARY
+#include<iostream>
+#include<string>
+using namespace std;
+
+class employee
+{
+ private:
+    string fname,lname;
+    string id;
+    int age;
+    double basic_salary;
+    double gross_salary;
+    double hra;
+    double dra;
+ public:
+    void getinfo()
+    {
+        cout<<"Enter Name : ";
+        cin>>fname>>lname;
+        cout<<"Enter ID : ";
+        cin>>id;
+        cout<<"Enter Age : ";
+        cin>>age;
+        cout<<"Enter Basic Salary : ";
+        cin>>basic_salary;
+        cout<<"Enter HRA In Percentage Of Basic Salary : ";
+        cin>>hra;
+        cout<<"Enter DRA In Percentage Of Basic Salary : ";
+        cin>>dra;
+    }
+    void cal_hra_dra()
+    {
+        dra=basic_salary*(dra/100);
+        hra=basic_salary*(hra/100);
+    }
+    void cal_gross()
+    {
+        gross_salary=basic_salary+hra+dra;
+    }
+    void showdata()
+    {
+        cout<<":....EMPLOYEE SALARY DETAILS....:"<<endl<<endl;
+        cout<<"Name : "<<fname<<" "<<lname<<endl;
+        cout<<"ID : "<<id<<endl;
+        cout<<"Age : "<<age<<endl;
+        cout<<"Basic Salary : "<<basic_salary<<endl;
+        cout<<"HRA : "<<hra<<endl;
+        cout<<"DRA : "<<dra<<endl;
+        cout<<"Gross Salary : "<<gross_salary<<endl;
+
+    }
+};
+
+int main()
+{
+    int num;
+    cout<<"Enter Number Of Employee :";
+    cin>>num;
+    employee* E;
+    E=new employee[num];
+    for(int i=0;i<num;i++)
+    {
+        E[i].getinfo();
+        E[i].cal_hra_dra();
+        E[i].cal_gross();
+    }
+    cout<<"\n\n\n\n";
+
+    for(int i=0;i<num;i++)
+    {
+        E[i].showdata();
+    }
+    return 0;
+}
